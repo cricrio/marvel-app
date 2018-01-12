@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchCharacters } from './actions';
 
 class App extends Component {
 	render() {
-		return (
-			<div className="App">
-			</div>
-		);
+		this.props.fetchCharacters();
+		return <div className="App" />;
 	}
 }
 
-export default App;
+export default connect(null, { fetchCharacters })(App);

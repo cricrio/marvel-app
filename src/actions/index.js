@@ -7,12 +7,17 @@ export const storeCharacters = (characters) => {
 		characters
 	};
 };
-export const STORE_CHARACTER = 'STORE_CHARACTER';
-export const storeCharacter = (character) => ({
-	type: STORE_CHARACTER,
-	character
-});
 
 export const fetchCharacters = () => (dispatch) => {
 	getCharacters().then((characters) => dispatch(storeCharacters(characters))).catch((err) => console.error(err));
+};
+
+export const STORE_ONE_CHARACTER = 'STORE_ONE_CHARACTER';
+export const storeOneCharacter = (character) => ({
+	type: STORE_ONE_CHARACTER,
+	character
+});
+
+export const fetchOneCharacter = (id) => (dispatch) => {
+	getCharacters(id).then((character) => dispatch(storeOneCharacter(character))).catch((err) => console.error(err));
 };

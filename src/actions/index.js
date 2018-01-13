@@ -19,5 +19,7 @@ export const storeOneCharacter = (character) => ({
 });
 
 export const fetchOneCharacter = (id) => (dispatch) => {
-	getCharacters(id).then((character) => dispatch(storeOneCharacter(character))).catch((err) => console.error(err));
+	getCharacters(id)
+		.then((characters) => dispatch(storeOneCharacter(characters[0])))
+		.catch((err) => console.error(err));
 };

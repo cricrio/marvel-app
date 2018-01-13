@@ -1,7 +1,8 @@
-import { STORE_CHARACTERS } from '../actions';
+import { STORE_CHARACTERS, STORE_ONE_CHARACTER } from '../actions';
 
 const initialState = {
-	characters: []
+	characters: [],
+	character: undefined
 };
 
 const reducers = (state = initialState, action) => {
@@ -9,6 +10,10 @@ const reducers = (state = initialState, action) => {
 		case STORE_CHARACTERS:
 			console.log(Object.assign({}, state, { characters: action.characters }));
 			return Object.assign({}, state, { characters: action.characters });
+
+		case STORE_ONE_CHARACTER:
+			console.log(state, action.character);
+			return Object.assign({}, state, { character: action.character });
 		default:
 			return state;
 	}

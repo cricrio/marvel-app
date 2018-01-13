@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import CharactersList from './containers/CharactersList';
 import CharactersDetails from './containers/CharacterDetails';
 
+import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -15,8 +15,9 @@ export default class App extends Component {
 				<Header />
 				<div className="cf w-80 pa2-ns center">
 					<Switch>
+						<Route path="/" exact component={CharactersList} />
 						<Route path="/characters/:id" component={CharactersDetails} />
-						<Route path="/" component={CharactersList} />
+						<Route component={NotFound} />
 					</Switch>
 				</div>
 				<Footer />

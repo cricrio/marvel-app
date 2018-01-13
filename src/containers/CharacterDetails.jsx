@@ -23,8 +23,6 @@ function List({ name, items }) {
 	);
 }
 
-const getFromUrls = (param, urls) => urls.filter((url) => url.type === param)[0];
-
 function URL({ name, url }) {
 	return (
 		<Link to="url" className="link dim mh2">

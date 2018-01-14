@@ -1,4 +1,4 @@
-import { getCharacters } from './fetchCharacters';
+import { getCharacters, getOneCharacter } from './fetchCharacters';
 
 export const STORE_CHARACTERS = 'STORE_CHARACTERS';
 export const storeCharacters = (characters) => {
@@ -8,8 +8,10 @@ export const storeCharacters = (characters) => {
 	};
 };
 
-export const fetchCharacters = () => (dispatch) => {
-	getCharacters().then((characters) => dispatch(storeCharacters(characters))).catch((err) => console.error(err));
+export const fetchCharacters = (pageNumber) => (dispatch) => {
+	getCharacters(pageNumber)
+		.then((characters) => dispatch(storeCharacters(characters)))
+		.catch((err) => console.error(err));
 };
 
 export const STORE_ONE_CHARACTER = 'STORE_ONE_CHARACTER';
@@ -19,7 +21,7 @@ export const storeOneCharacter = (character) => ({
 });
 
 export const fetchOneCharacter = (id) => (dispatch) => {
-	getCharacters(id)
+	getOneCharacter(id)
 		.then((characters) => dispatch(storeOneCharacter(characters[0])))
 		.catch((err) => console.error(err));
 };

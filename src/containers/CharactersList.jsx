@@ -7,7 +7,7 @@ import CharactersList from '../components/CharacterList';
 export class CharactersListPage extends React.Component {
 	constructor(props) {
 		super(props);
-		props.fetchCharacters();
+		props.fetchCharacters(1);
 	}
 
 	render() {

@@ -1,4 +1,4 @@
-import { getCharacters } from '../services';
+import { getCharacters } from './fetchCharacters';
 
 export const STORE_CHARACTERS = 'STORE_CHARACTERS';
 export const storeCharacters = (characters) => {

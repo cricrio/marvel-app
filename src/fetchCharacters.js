@@ -2,7 +2,7 @@ import md5 from 'md5';
 
 const baseURL = 'http://gateway.marvel.com:80/v1/public/characters';
 
-const getQueryPararms = () => {
+const makeQueryPararms = () => {
 	const ts = Date.now();
 	const {
 		REACT_APP_PUBLIC_KEY,
@@ -13,9 +13,9 @@ const getQueryPararms = () => {
 	return `ts=${ts}&apikey=${REACT_APP_PUBLIC_KEY}&hash=${hash}`;
 };
 
-const getUrl = (id) => (id ? `${baseURL}/${id}?${getQueryPararms()}` : `${baseURL}?${getQueryPararms()}`);
+const makeUrl = (id) => (id ? `${baseURL}/${id}?${makeQueryPararms()}` : `${baseURL}?${makeQueryPararms()}`);
 
 export const getCharacters = (id) =>
-	fetch(getUrl(id))
+	fetch(makeUrl(id))
 	.then((response) => response.json())
 	.then((json) => json.data.results);

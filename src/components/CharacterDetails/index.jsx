@@ -13,7 +13,11 @@ export default function CharacterDetails({ character }) {
 		<div>
 			<h1 className="f3 black athelas">{character.name}</h1>
 			<div>
-				<img className="w5 v-top" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
+				<img
+					className="w5 v-top"
+					src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+					alt={character.name}
+				/>
 				<div className="dib w-60 center pl4">
 					<Description description={character.description} />
 					<URLList urls={character.urls} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import CharactersList from './containers/CharactersList';
+import CharactersList from './containers/CharactersListPage';
 import CharactersPage from './containers/CharacterPage';
 
 import NotFound from './components/NotFound';

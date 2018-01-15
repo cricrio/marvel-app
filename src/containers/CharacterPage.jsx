@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchOneCharacter } from '../actions';
 
 import CharacterDetails from '../components/CharacterDetails/';
+import LoadingSpinner from '../components/LoadingSpinner';
+import ErrorMessage from '../components/ErrorMessage';
 
 class CharacterPage extends React.Component {
 	constructor(props) {
@@ -12,13 +14,21 @@ class CharacterPage extends React.Component {
 	}
 
 	render() {
-		const { character } = this.props;
-		return <CharacterDetails character={character} />;
+		const { character, loading, error } = this.props;
+		return (
+			<div>
+				<ErrorMessage error={error} />
+				<CharacterDetails character={character} />
+				<LoadingSpinner loading={loading} />
+			</div>
+		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	character: state.character
+	character: state.character,
+	loading: state.loading,
+	error: state.errorDetails
 });
 
 export default connect(mapStateToProps, { fetchOneCharacter })(CharacterPage);

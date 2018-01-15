@@ -10,7 +10,7 @@ const makeQueryPararms = () => {
 	return `ts=${ts}&apikey=${REACT_APP_PUBLIC_KEY}&hash=${hash}`;
 };
 
-const makeBaseUrl = (id) => `${baseURL}${id ? '/' + id : ''}?${makeQueryPararms()}`;
+const makeUrl = (id) => `${baseURL}${id ? '/' + id : ''}?${makeQueryPararms()}`;
 
 const charactersPerPage = 33;
 
@@ -19,14 +19,25 @@ const offsetAndLimitForPage = (pageNumber) => {
 	return `&limit=${charactersPerPage}&offset=${offset}`;
 };
 
-const fetchCharacters = (url) => fetch(url).then((response) => response.json()).then((json) => json.data.results);
+const fetchCharacters = (url) =>
+	fetch(url)
+		.then((response) => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				const error = new Error('Error with marvel api');
+				error.code = response.status;
+				throw error;
+			}
+		})
+		.then((json) => json.data.results);
 
 export const getCharacters = (pageNumber) => {
-	const url = makeBaseUrl() + offsetAndLimitForPage(pageNumber);
+	const url = makeUrl() + offsetAndLimitForPage(pageNumber);
 	return fetchCharacters(url);
 };
 
 export const getOneCharacter = (id) => {
-	const url = makeBaseUrl(id);
+	const url = makeUrl(id);
 	return fetchCharacters(url);
 };

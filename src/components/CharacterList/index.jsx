@@ -8,9 +8,10 @@ function Character({ character }) {
 			<img
 				className="db w-100 h5 br2 br--top"
 				src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+				alt={character.name}
 			/>
 			<div className="pa2 ph3-ns pb3-ns h3">
-				<Link to={`/characters/${character.id}`} className="link dim f3 black athelas tc">
+				<Link to={`/characters/${character.id}`} className="link dim f4 black athelas tc">
 					{character.name}
 				</Link>
 			</div>

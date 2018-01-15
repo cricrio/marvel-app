@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 function URL({ name, url }) {
 	return (
-		<Link to="url" className="link dim mh2">
+		<a href={url} target="_blank" rel="noopener noreferrer" className="link dim mh2">
 			{name}
-		</Link>
+		</a>
 	);
 }
 
